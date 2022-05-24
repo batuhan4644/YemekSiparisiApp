@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/anasayfaFragment">
+
+    <fragment
+        android:id="@+id/anasayfaFragment"
+        android:name="com.example.yemeksiparisiapp.fragment.AnasayfaFragment"
+        android:label="AnasayfaFragment"
+        tools:layout="@layout/fragment_anasayfa" >
+        <action
+            android:id="@+id/detayGecis"
+            app:destination="@id/yemekDetayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yemekDetayFragment"
+        android:name="com.example.yemeksiparisiapp.fragment.YemekDetayFragment"
+        android:label="YemekDetayFragment"
+        tools:layout="@layout/fragment_yemek_detay">
+        <argument
+            android:name="yemek"
+            app:argType="com.example.yemeksiparisiapp.entity.Yemekler" />
+        <action
+            android:id="@+id/sepetegecis"
+            app:destination="@id/yemekSepetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yemekSepetFragment"
+        android:name="com.example.yemeksiparisiapp.fragment.YemekSepetFragment"
+        android:label="YemekSepetFragment"
+        tools:layout="@layout/fragment_yemek_sepet">
+        <argument
+            android:name="yemek"
+            app:argType="com.example.yemeksiparisiapp.entity.Yemekler" />
+    </fragment>
+</navigation>

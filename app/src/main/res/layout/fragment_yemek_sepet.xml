@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="yemekSepetToolbarBaslik" type="String" />
+        <variable name="yemekSepetFragment" type="com.example.yemeksiparisiapp.fragment.YemekSepetFragment" />
+        <variable name="yemekNesnesi" type="com.example.yemeksiparisiapp.entity.Yemekler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.YemekSepetFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarYemekSepet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{yemekSepetToolbarBaslik}" />
+
+
+        <ImageView
+            android:id="@+id/ivYemekResim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarYemekSepet"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageViewSilResim"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarYemekSepet"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/sil_resim" />
+
+        <TextView
+            android:id="@+id/tvYemekAdi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@{yemekNesnesi.yemek_adi}"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivYemekResim"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarYemekSepet" />
+
+        <TextView
+            android:id="@+id/tvYemekFiyat2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text='@{yemekNesnesi.yemek_fiyat+ "  ₺"}'
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivYemekResim"
+            app:layout_constraintTop_toBottomOf="@+id/tvYemekAdi2" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:text="Sipariş Ver"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/sepetButtonEksi"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:icon="@drawable/eksi_resim"
+            app:layout_constraintStart_toEndOf="@+id/ivYemekResim"
+            app:layout_constraintTop_toBottomOf="@+id/tvYemekFiyat2"
+            android:onClick="@{() -> yemekSepetFragment.buttonEksi()}"/>
+
+        <Button
+            android:id="@+id/sepetButtonArti"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="86dp"
+            app:icon="@drawable/arti_resim"
+            android:onClick="@{() -> yemekSepetFragment.buttonArti()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvYemekSepetAdedi"
+            app:layout_constraintTop_toBottomOf="@+id/tvYemekFiyat2" />
+
+        <TextView
+            android:id="@+id/tvYemekSepetAdedi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="22dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/sepetButtonEksi"
+            app:layout_constraintTop_toBottomOf="@+id/tvYemekFiyat2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
